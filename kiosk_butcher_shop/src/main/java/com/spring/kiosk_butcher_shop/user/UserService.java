@@ -14,7 +14,9 @@ public class UserService {
         String phoneNum = userRequestDto.getPhoneNum();
         Long reservesPoint = userRequestDto.getReservesPoint();
 
-        User.save(username, phoneNum , reservesPoint);
+        User user = new User(username, phoneNum , reservesPoint);
+
+        userRepository.save(user);
 
     }
 }
