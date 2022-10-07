@@ -20,11 +20,11 @@ public class Product {
     @Column(nullable = false)
     private String MeatCategory;
 
-
-
+    // 가격
     @Column(nullable = false)
     private Long productPrice;
 
+    // 세일 가격
     @Column
     private Long productDiscountPrice;
 
