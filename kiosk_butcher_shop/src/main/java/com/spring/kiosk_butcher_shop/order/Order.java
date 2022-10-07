@@ -4,8 +4,13 @@ import com.spring.kiosk_butcher_shop.orderBasket.OrderBasket;
 import com.spring.kiosk_butcher_shop.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+// 참고 블로그 https://web2eye.tistory.com/202
 
 @Entity
+@Table(name = "orders")
 public class Order {
 
     // 주문 번호
@@ -19,9 +24,8 @@ public class Order {
     private User orderUser;
 
     // 장바구니
-    @OneToMany
-    @JoinTable(name = "basket_id")
-    private OrderBasket orderBasket;
+    @OneToMany(mappedBy = "order")
+    private List<OrderBasket> orderBaskets = new ArrayList<>();
 
     //할인 가격
     private Long discountPrice;

@@ -1,7 +1,7 @@
 package com.spring.kiosk_butcher_shop.orderBasket;
 
+import com.spring.kiosk_butcher_shop.order.Order;
 import com.spring.kiosk_butcher_shop.product.Product;
-import com.spring.kiosk_butcher_shop.user.User;
 
 import javax.persistence.*;
 
@@ -14,15 +14,13 @@ public class OrderBasket {
     @Column(name = "basket_id")
     private Long id;
 
-    // 구매자
-    @OneToOne
-    private User user;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     //상품명
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
-    private Long discountPrice;
-
-    private Long totalPrice;
 }
