@@ -1,8 +1,12 @@
 package com.spring.kiosk_butcher_shop.product;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
-@Entity
+@Entity @NoArgsConstructor
+@Getter
 public class Product {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,15 +22,30 @@ public class Product {
 
     // 고기 카테고리
     @Column(nullable = false)
-    private String MeatCategory;
+    private String meatCategory;
 
     // 가격
     @Column(nullable = false)
-    private Long productPrice;
+    private String productPrice;
 
     // 세일 가격
     @Column
-    private Long productDiscountPrice;
+    private String productDiscountPrice;
 
 
+    public Product(String productName, String productOrigin, String meatCategory, String productPrice, String productDiscountPrice) {
+        this.productName = productName;
+        this.meatCategory = meatCategory;
+        this.productOrigin = productOrigin;
+        this.productPrice = productPrice;
+        this.productDiscountPrice = productDiscountPrice;
+    }
+
+    public void updateProduct(String productName, String productOrigin, String meatCategory, String productPrice, String productDiscountPrice) {
+        this.productName = productName;
+        this.meatCategory = meatCategory;
+        this.productOrigin = productOrigin;
+        this.productPrice = productPrice;
+        this.productDiscountPrice = productDiscountPrice;
+    }
 }
