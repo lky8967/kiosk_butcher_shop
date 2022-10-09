@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class ProductController {
@@ -14,7 +16,6 @@ public class ProductController {
 
     @PostMapping("/api/product/create")
     private ResponseEntity<ApiResponseMessage> saveProduct(@RequestBody ProductRequestDto productRequestDto){
-
         productService.productSave(productRequestDto);
         ApiResponseMessage message = new ApiResponseMessage("Success", "상품 등록이 완료되었습니다", "", "");
         return new ResponseEntity<ApiResponseMessage>(message, HttpStatus.OK);
@@ -22,7 +23,7 @@ public class ProductController {
 
     @PutMapping("/api/product/update/{productId}")
     private ResponseEntity<ApiResponseMessage> updateProduct(@RequestBody ProductRequestDto productRequestDto,
-                                 @PathVariable("productId") Long productId){
+                                                             @PathVariable("productId") Long productId){
         productService.productUpdate(productRequestDto, productId);
         ApiResponseMessage message = new ApiResponseMessage("Success", "상품 수정이 완료되었습니다", "", "");
         return new ResponseEntity<ApiResponseMessage>(message, HttpStatus.OK);
@@ -38,6 +39,11 @@ public class ProductController {
     @GetMapping("/api/product/read/{productId}")
     private ProductResponseDto readProduct(@PathVariable("productId") Long productId) {
         return productService.productRead(productId);
+    }
+
+    @GetMapping("/api/product/readAll")
+    private ProductAllResponseDto readAllProduct() {
+        return productService.productAllRead();
     }
 
 }

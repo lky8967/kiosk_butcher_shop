@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -94,4 +96,11 @@ public class ProductService {
     }
 
 
+    public ProductAllResponseDto productAllRead() {
+        List<Product> products = productRepository.findAll();
+        List<ProductResponseDto> result = products.stream()
+                .map(ProductResponseDto::new)
+                .collect(Collectors.toList());
+        return new ProductAllResponseDto(result);
+    }
 }
