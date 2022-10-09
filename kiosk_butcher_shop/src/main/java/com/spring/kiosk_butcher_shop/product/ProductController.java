@@ -46,4 +46,26 @@ public class ProductController {
         return productService.productAllRead();
     }
 
+    // 카테고리 돼지
+    @GetMapping("/api/product/read/pigs")
+    private ProductAllResponseDto readProduct() {
+        return productService.productPigsRead();
+    }
+
+    // 카테고리 소
+    @GetMapping("/api/product/read/cows")
+    private ProductAllResponseDto readCowsProduct() {
+        return productService.productCowsRead();
+    }
+
+    // 카테고리 닭
+    @GetMapping("/api/product/read/chickens")
+    private ProductAllResponseDto readChickenProduct() {
+        return productService.productChickenRead();
+    }
+
+
+
+
+
 }

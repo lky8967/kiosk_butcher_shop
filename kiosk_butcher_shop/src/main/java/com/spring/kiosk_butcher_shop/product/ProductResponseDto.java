@@ -2,8 +2,12 @@ package com.spring.kiosk_butcher_shop.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Getter @AllArgsConstructor
+@NoArgsConstructor
 public class ProductResponseDto {
     // 상품 번호
     private Long id;
@@ -26,4 +30,6 @@ public class ProductResponseDto {
         this.productPrice = product.getProductPrice();
         this.productDiscountPrice = product.getProductDiscountPrice();
     }
+
+
 }

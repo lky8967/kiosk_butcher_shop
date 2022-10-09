@@ -95,11 +95,37 @@ public class ProductService {
         return new ProductResponseDto(product);
     }
 
-
     public ProductAllResponseDto productAllRead() {
         List<Product> products = productRepository.findAll();
         List<ProductResponseDto> result = products.stream()
                 .map(ProductResponseDto::new)
+                .collect(Collectors.toList());
+        return new ProductAllResponseDto(result);
+    }
+
+    public ProductAllResponseDto productPigsRead() {
+        List<Product> products = productRepository.findAll();
+        List<ProductResponseDto> result = products.stream()
+                .map(ProductResponseDto::new)
+                .filter(x -> x.getMeatCategory().equals("돼지") )
+                .collect(Collectors.toList());
+        return new ProductAllResponseDto(result);
+    }
+
+    public ProductAllResponseDto productCowsRead() {
+        List<Product> products = productRepository.findAll();
+        List<ProductResponseDto> result = products.stream()
+                .map(ProductResponseDto::new)
+                .filter(x -> x.getMeatCategory().equals("소") )
+                .collect(Collectors.toList());
+        return new ProductAllResponseDto(result);
+    }
+
+    public ProductAllResponseDto productChickenRead() {
+        List<Product> products = productRepository.findAll();
+        List<ProductResponseDto> result = products.stream()
+                .map(ProductResponseDto::new)
+                .filter(x -> x.getMeatCategory().equals("닭") )
                 .collect(Collectors.toList());
         return new ProductAllResponseDto(result);
     }
