@@ -29,10 +29,10 @@ public class OrderBasket {
     //상품명
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Optional<Product> product;
+    private Product product;
 
-    public OrderBasket(User user, Optional<Product> product) {
-        this.user = user;
-        this.product = product;
+    public OrderBasket(Long userId, Long productId) {
+        this.user.getId() = userId;
+        this.product.getId() = productId;
     }
 }
